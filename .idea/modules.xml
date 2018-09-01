@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/initial.iml" filepath="$PROJECT_DIR$/.idea/modules/initial.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/initial_main.iml" filepath="$PROJECT_DIR$/.idea/modules/initial_main.iml" group="initial" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/initial_test.iml" filepath="$PROJECT_DIR$/.idea/modules/initial_test.iml" group="initial" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mongo.iml" filepath="$PROJECT_DIR$/.idea/modules/mongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mongo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mongo_main.iml" group="mongo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mongo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mongo_test.iml" group="mongo" />
     </modules>
   </component>
 </project>
