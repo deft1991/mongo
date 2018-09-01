@@ -1,6 +1,5 @@
 package ru.deft.mongo.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -12,14 +11,20 @@ import java.util.List;
  * Created by Sergey Golitsyn (deft) on 18.08.2018
  */
 @Data
-@NoArgsConstructor
 @Document(collection = "book")
 public class Book {
   @Id
   private String id;
   private String name;
   private String description;
-  List<Author> authors;
-  List<Genre> genres;
+  private List<Author> authors;
+  private List<Genre> genres;
+  private List<Commentary> commentaries;
 
+  public Book() {
+  }
+
+  public Book(String name) {
+	this.name = name;
+  }
 }

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import ru.deft.mongo.domain.Author;
 import ru.deft.mongo.repository.AuthorRepository;
 
+import java.util.UUID;
+
 /**
  * Created by Sergey Golitsyn (deft) on 18.08.2018
  */
@@ -40,5 +42,17 @@ public class AuthorService {
 	for (Author customer : authorRepository.findByLastName("Smith")) {
 	  System.out.println(customer);
 	}
+  }
+
+  public void printAuthors() {
+	authorRepository.findAll().forEach(System.out::println);
+  }
+
+  public void printAuthorById(String id) {
+	System.out.println(authorRepository.findById(id));
+  }
+
+  public void addAuthor(String firstName, String lastName) {
+	System.out.println(authorRepository.save(new Author(firstName, lastName)));
   }
 }

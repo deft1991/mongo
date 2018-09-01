@@ -2,6 +2,7 @@ package ru.deft.mongo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import ru.deft.mongo.domain.Author;
 import ru.deft.mongo.domain.Book;
 import ru.deft.mongo.domain.Genre;
@@ -41,9 +42,30 @@ public class BookService {
 	bookRepository.save(book);
   }
 
-  public void getAll(){
-    List<Book> books = bookRepository.findAllByName("first book");
-    books.forEach(System.out::print);
+  public void printBooks() {
+	bookRepository.findAll().forEach(System.out::println);
+  }
+
+  public void printOne(String id) {
+	System.out.println(bookRepository.findById(id).orElseThrow());
+  }
+
+  public void addBook(String bookName) {
+	this.addBook(bookName, null, null);
+  }
+
+  public void addBook(String bookName, String authorId) {
+	this.addBook(bookName, authorId, null);
+  }
+
+  public void addBook(String bookName, String authorId, String genreId) {
+	if (StringUtils.isEmpty(bookName)) {
+	  throw new RuntimeException("Book name can`t be empty");
+	}
+	Book book = new Book(bookName);
+	book.setAuthors(List.of(authorRepository.findById(authorId).orElseThrow()));
+	book.setGenres(List.of(genreRepository.findById(genreId).orElseThrow()));
+	bookRepository.save(book);
   }
 
 }
