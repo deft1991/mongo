@@ -68,4 +68,8 @@ public class BookService {
 	bookRepository.save(book);
   }
 
+  public List<Book> findByName(String name){
+    return bookRepository.findAllByName(name);
+  }
+
 }
