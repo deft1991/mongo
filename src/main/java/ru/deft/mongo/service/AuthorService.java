@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.deft.mongo.domain.Author;
 import ru.deft.mongo.repository.AuthorRepository;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -27,9 +28,8 @@ public class AuthorService {
 	// fetch all customers
 	System.out.println("Customers found with findAll():");
 	System.out.println("-------------------------------");
-	for (Author customer : authorRepository.findAll()) {
-	  System.out.println(customer);
-	}
+	Objects.requireNonNull(authorRepository.findAll().collectList().block())
+			.forEach(System.out::println);
 	System.out.println();
 
 	// fetch an individual customer
@@ -39,13 +39,13 @@ public class AuthorService {
 
 	System.out.println("Customers found with findByLastName('Smith'):");
 	System.out.println("--------------------------------");
-	for (Author customer : authorRepository.findByLastName("Smith")) {
-	  System.out.println(customer);
-	}
+	Objects.requireNonNull(authorRepository.findByLastName("Smith").collectList().block())
+			.forEach(System.out::println);
   }
 
   public void printAuthors() {
-	authorRepository.findAll().forEach(System.out::println);
+	Objects.requireNonNull(authorRepository.findAll().collectList().block())
+			.forEach(System.out::println);
   }
 
   public void printAuthorById(String id) {
