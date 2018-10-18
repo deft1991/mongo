@@ -8,7 +8,7 @@
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" th:href="@{/css/main.css}"
-          href="../static/css/main.css"/>
+          href="css/main.css"/>
 
 </head>
 <body>
@@ -27,6 +27,30 @@
     </div>
 </nav>
 
+<div class="starter-template">
+    <h1>Spring Boot AJAX Example</h1>
+
+    <div id="feedback"></div>
+
+    <form class="form-horizontal" id="search-form">
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label">Book name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="bookName" value="search..."/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="bth-search"
+                        class="btn btn-primary btn-lg">Search
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
 <div class="container">
 
     <div class="starter-template">
@@ -37,14 +61,11 @@
 <table class="book" border="1" style="border: aquamarine">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Action</th>
-        <!--<th>AuthorId</th>-->
-        <!--<th>AuthorName</th>-->
-        <!--<th>GenreId</th>-->
-        <!--<th>GenreName</th>-->
+        <th></th>
+        <th th:width="120">ID</th>
+        <th th:width="150">Name</th>
+        <th th:width="200">Description</th>
+        <th th:width="50">Action</th>
     </tr>
     </thead>
 
@@ -61,14 +82,14 @@
 </table>
 
 
-
 <table class="author" border="1" style="border: aqua">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Action</th>
+        <th></th>
+        <th th:width="120">ID</th>
+        <th th:width="100">First Name</th>
+        <th th:width="100">Last Name</th>
+        <th  th:width="50">Action</th>
     </tr>
     </thead>
 
@@ -87,9 +108,10 @@
 <table class="author" border="1" style="border: aqua">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Action</th>
+        <th></th>
+        <th th:width="100">ID</th>
+        <th th:width="150">Name</th>
+        <th th:width="50">Action</th>
     </tr>
     </thead>
 
@@ -104,9 +126,19 @@
     </th:block>
 </table>
 <!-- /.container -->
+<div class="container">
+    <footer>
+        <p>
+            © <a href="https://vk.com/deft1991">Deft.com</a> 2018
+        </p>
+    </footer>
+</div>
 
 <script type="text/javascript"
+        src="webjars/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript"
         src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>

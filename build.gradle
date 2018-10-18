@@ -30,16 +30,25 @@ ext {
     thymeleafVersion = "2.0.4.RELEASE"
     devtoolsVersion = "2.0.4.RELEASE"
     starterWebVersion = "2.0.4.RELEASE"
+    bootstrapVersion = "3.3.7"
+    jqueryVersion = "2.2.4"
+    springWebVersion = "5.0.8.RELEASE"
 }
 
 dependencies {
+
+    compile("org.webjars:bootstrap:${bootstrapVersion}")
+    compile("org.webjars:jquery:${jqueryVersion}")
+
+    compile("org.springframework:spring-web:${springWebVersion}")
+
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("org.projectlombok:lombok")
     compile('org.springframework.boot:spring-boot-starter-validation')
     compileOnly('org.springframework.boot:spring-boot-configuration-processor')
     compile("org.springframework.shell:spring-shell-starter:${shellVersion}")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf:${thymeleafVersion}")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools:${devtoolsVersion}")
     compile("org.springframework.boot:spring-boot-starter-web:${starterWebVersion}")
 

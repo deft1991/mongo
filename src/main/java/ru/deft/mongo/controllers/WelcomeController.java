@@ -7,9 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ru.deft.mongo.domain.Book;
 import ru.deft.mongo.repository.AuthorRepository;
 import ru.deft.mongo.repository.BookRepository;
@@ -49,7 +51,7 @@ public class WelcomeController {
     return "editBook";
   }
 
-  @RequestMapping(value="/edit", method = RequestMethod.POST)
+  @PostMapping("/edit")
   public String notesEdit(@ModelAttribute Book book, Model model) {
     bookRepository.save(book);
     model.addAttribute("books", bookRepository.findAll());
