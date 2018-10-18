@@ -1,7 +1,6 @@
 package ru.deft.mongo.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import ru.deft.mongo.domain.Author;
 import ru.deft.mongo.domain.Genre;
 
 /**

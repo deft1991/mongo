@@ -7,8 +7,6 @@ import ru.deft.mongo.domain.Commentary;
 import ru.deft.mongo.repository.BookRepository;
 import ru.deft.mongo.repository.CommentaryRepository;
 
-import java.util.UUID;
-
 /**
  * @author Golitsyn Sergey (sgolitsyn)
  * @since 7/27/2018

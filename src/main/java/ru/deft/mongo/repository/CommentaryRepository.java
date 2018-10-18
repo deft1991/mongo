@@ -4,7 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import ru.deft.mongo.domain.Commentary;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author Golitsyn Sergey (sgolitsyn)
