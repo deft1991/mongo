@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../static/css/main.css"/>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="welcome.html">Home page</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="author.html">Authors</a></li>
+                <!--<li><a href="#about">About</a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Otus homework.</h1>
+    </div>
+
+</div>
+<table class="book" border="1" style="border: aquamarine">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+        <!--<th>AuthorId</th>-->
+        <!--<th>AuthorName</th>-->
+        <!--<th>GenreId</th>-->
+        <!--<th>GenreName</th>-->
+    </tr>
+    </thead>
+
+    <th:block th:each="book : ${books}">
+        <tr class="row">
+            <td th:text="${book.id}">A Book id'</td>
+            <td th:text="${book.name}">A Book name'</td>
+            <td th:text="${book.description}">A Book description'</td>
+            <td>
+                <a href="editBook.html " data-th-href="@{/editBook(id=${book.id})}">Edit</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+
+
+<table class="author" border="1" style="border: aqua">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <th:block th:each="author : ${authors}">
+        <tr class="row">
+            <td th:text="${author.id}">A author id'</td>
+            <td th:text="${author.firstName}">A author firstName'</td>
+            <td th:text="${author.lastName}">A author lastName'</td>
+            <td>
+                <a href="editAuthor.html">Edit</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+<table class="author" border="1" style="border: aqua">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <th:block th:each="genre : ${genres}">
+        <tr class="row">
+            <td th:text="${genre.id}">A genre id</td>
+            <td th:text="${genre.name}">A genre name</td>
+            <td>
+                <a href="editGenre.html">Edit</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<!-- /.container -->
+
+<script type="text/javascript"
+        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
