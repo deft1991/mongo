@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.deft.mongo.domain.Genre;
 import ru.deft.mongo.repository.GenreRepository;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -20,11 +21,12 @@ public class GenreService {
   private final GenreRepository genreRepository;
 
   public void printGenres() {
-	genreRepository.findAll().forEach(System.out::println);
+	Objects.requireNonNull(genreRepository.findAll().collectList().block())
+			.forEach(System.out::println);
   }
 
   public void printGenreById(String id) {
-	System.out.println(genreRepository.findById(id).orElseThrow());
+	System.out.println(genreRepository.findById(id).block());
   }
 
   public void addGenre(String name) {

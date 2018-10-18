@@ -38,15 +38,15 @@ public class WelcomeController {
   @GetMapping("/")
   public String welcome(Map<String, Object> model) {
     model.put("message", this.message);
-    model.put("books", bookRepository.findAll());
-    model.put("authors", authorRepository.findAll());
-    model.put("genres", genreRepository.findAll());
+    model.put("books", bookRepository.findAll().collectList().block());
+    model.put("authors", authorRepository.findAll().collectList().block());
+    model.put("genres", genreRepository.findAll().collectList().block());
     return "welcome";
   }
 
   @GetMapping("/editBook")
   public String editPage(@RequestParam("id") String id, Model model) {
-    Book book = bookRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    Book book = bookRepository.findById(id).block();
     model.addAttribute("book", book);
     return "editBook";
   }
@@ -54,7 +54,9 @@ public class WelcomeController {
   @PostMapping("/edit")
   public String notesEdit(@ModelAttribute Book book, Model model) {
     bookRepository.save(book);
-    model.addAttribute("books", bookRepository.findAll());
+    model.addAttribute("books", bookRepository.findAll()
+            .collectList()
+            .block());
     return "welcome";
   }
 }

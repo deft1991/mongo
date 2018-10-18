@@ -7,6 +7,7 @@ import ru.deft.mongo.domain.Commentary;
 import ru.deft.mongo.repository.BookRepository;
 import ru.deft.mongo.repository.CommentaryRepository;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -22,11 +23,14 @@ public class CommentService {
 
   public void addComment(String bookId, String comment) {
 	Commentary commentary = new Commentary(comment);
-	commentary.setBook(bookRepository.findById(bookId).orElseThrow());
+	commentary.setBook(bookRepository.findById(bookId).block());
 	commentaryRepository.save(commentary);
   }
 
   public void readComment(String bookId) {
-	commentaryRepository.findAllByBookId(bookId).forEach(System.out::println);
+	Objects.requireNonNull(commentaryRepository.findAllByBookId(bookId)
+			.collectList()
+			.block())
+			.forEach(System.out::println);
   }
 }

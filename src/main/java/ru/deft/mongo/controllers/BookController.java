@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.BodyInserters;
+import reactor.core.publisher.Flux;
 import ru.deft.mongo.AjaxResponseBody;
 import ru.deft.mongo.SearchCriteria;
 import ru.deft.mongo.domain.Book;
@@ -14,7 +16,11 @@ import ru.deft.mongo.repository.BookRepository;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static org.springframework.web.reactive.function.server.ServerResponse.notFound;
+import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 /**
  * Created by Sergey Golitsyn (deft) on 01.09.2018
@@ -43,14 +49,13 @@ public class BookController {
 
 	}
 
-	List<Book> users = bookRepository.findAllByName(search.getBookName());
-	if (users.isEmpty()) {
+	Flux<Book> users = bookRepository.findAllByName(search.getBookName());
+	if (Objects.requireNonNull(users.collectList().block()).isEmpty()) {
 	  result.setMsg("no book found!");
 	} else {
 	  result.setMsg("success");
 	}
-	result.setResult(users);
-
+	result.setResult(users.collectList().block());
 	return ResponseEntity.ok(result);
 
   }
