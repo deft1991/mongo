@@ -1,13 +1,9 @@
 package ru.deft.mongo.service;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.deft.mongo.domain.Author;
 import ru.deft.mongo.repository.AuthorRepository;
-
-import java.util.UUID;
 
 /**
  * Created by Sergey Golitsyn (deft) on 18.08.2018

@@ -75,7 +75,7 @@ public class ShellComponent {
   }
 
   @ShellMethod("Add author")
-  public void addAuthor(@ShellOption String fname,@ShellOption String lname) {
+  public void addAuthor(@ShellOption String fname, @ShellOption String lname) {
 	authorService.addAuthor(fname, lname);
   }
 

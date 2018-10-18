@@ -6,8 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.deft.mongo.domain.Genre;
 import ru.deft.mongo.repository.GenreRepository;
 
-import java.util.UUID;
-
 /**
  * @author Golitsyn Sergey (sgolitsyn)
  * @since 7/27/2018
@@ -28,6 +26,8 @@ public class GenreService {
   }
 
   public void addGenre(String name) {
-	System.out.println(genreRepository.save(new Genre(){{setName(name);}}));
+	System.out.println(genreRepository.save(new Genre() {{
+	  setName(name);
+	}}));
   }
 }
